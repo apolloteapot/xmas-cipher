@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <title>Are you alone?</title>
+    <meta charset="UTF-8">
+    <meta property="og:title" content="冬紅ちゃまー😭">
+    <meta property="og:description" content="換字式暗号を任意の変換表で復号化します。">
+  </head>
+  <body>
+    <h1>Are you alone?</h1>
+
+    <label for="table-before">表（変換前）</label><br>
+    <textarea type="text" id="table-before" rows="1" cols="70">Gnpm oDfS_vLuAKE_gRwyBh_iQ123479C</textarea><br>
+    <label for="table-after">表（変換後）</label><br>
+    <textarea type="text" id="table-after" rows="1" cols="70">abcdefghijklmnopqrstuvwxyzAFCITY </textarea><br>
+    <label for="ciphertext">暗号文</label><br>
+    <textarea type="text" id="ciphertext" rows="10" cols="70"></textarea><br>
+    <button onclick="decode()" style="width:100px; height: 50px;">復号化</button><br>
+    <label for="ciphertext">平文</label><br>
+    <textarea type="text" id="plaintext" rows="10" cols="70"></textarea><br>
+
+    <script>
+      function decode() 
+      {
+        var table_before = Array.from(document.getElementById("table-before").value);
+        var table_after = Array.from(document.getElementById("table-after").value);
+
+        var table = {};
+        table_before.forEach((char, i) => table[char] = table_after[i]);
+
+        var ciphertext = Array.from(document.getElementById("ciphertext").value);
+        var plaintext = '';
+
+        for (let i = 0; i < ciphertext.length; i++) 
+        {
+            c = ciphertext[i];
+            if (c in table)
+            {
+                plaintext += table[c];
+            }
+            else
+            {
+                plaintext += c;
+            }
+        }
+
+        document.getElementById("plaintext").innerHTML = plaintext;
+      }
+    </script>
+  </body>
+</html>
