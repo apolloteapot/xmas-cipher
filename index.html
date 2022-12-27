@@ -12,9 +12,10 @@
     <textarea type="text" id="table-before" rows="1" cols="100">Gnpm oDfS_vLuAKE_gRwyBh_iQ1234679C</textarea><br>
     <label for="table-after">表（変換後）</label><br>
     <textarea type="text" id="table-after" rows="1" cols="100">abcdefghijklmnopqrstuvwxyzAFCIWTY </textarea><br>
+    <button onclick="swap_tables()" style="width:150px; height: 50px;">変換前と後を入れ替え</button><br>
     <label for="ciphertext">暗号文</label><br>
     <textarea type="text" id="ciphertext" rows="10" cols="100"></textarea><br>
-    <button onclick="decode()" style="width:100px; height: 50px;">復号化</button><br>
+    <button onclick="decode()" style="width:150px; height: 50px;">復号化</button><br>
     <label for="ciphertext">平文</label><br>
     <textarea type="text" id="plaintext" rows="10" cols="100"></textarea><br>
 
@@ -44,6 +45,13 @@
         }
 
         document.getElementById("plaintext").innerHTML = plaintext;
+      }
+
+      function swap_tables()
+      {
+        var temp = document.getElementById("table-before").innerHTML;
+        document.getElementById("table-before").innerHTML = document.getElementById("table-after").innerHTML;
+        document.getElementById("table-after").innerHTML = temp;
       }
     </script>
   </body>
