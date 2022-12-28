@@ -9,9 +9,11 @@
     <h1>Are you alone?</h1>
 
     <label for="table-before">表（変換前）</label><br>
-    <textarea type="text" id="table-before" rows="1" cols="100">Gnpm oDfS_vLuAKE_gRwyBh_iQ1234679C</textarea><br>
+    <textarea type="text" id="table-before" rows="1" cols="100"></textarea><br>
     <label for="table-after">表（変換後）</label><br>
-    <textarea type="text" id="table-after" rows="1" cols="100">abcdefghijklmnopqrstuvwxyzAFCIWTY </textarea><br>
+    <textarea type="text" id="table-after" rows="1" cols="100"></textarea><br>
+    <button onclick="fill_en()" style="width:150px; height: 50px;">英語</button>
+    <button onclick="fill_jp()" style="width:150px; height: 50px;">日本語</button>
     <button onclick="swap_tables()" style="width:150px; height: 50px;">変換前と後を入れ替え</button><br>
     <label for="ciphertext">暗号文</label><br>
     <textarea type="text" id="ciphertext" rows="10" cols="100"></textarea><br>
@@ -20,6 +22,18 @@
     <textarea type="text" id="plaintext" rows="10" cols="100"></textarea><br>
 
     <script>
+      function fill_en()
+      {
+        document.getElementById("table-before").value = "Gnpm oDfS_vLuAKE_gRwyBh_iQ1234679C";
+        document.getElementById("table-after").value = "abcdefghijklmnopqrstuvwxyzAFCIWTY ";
+      }
+
+      function fill_jp()
+      {
+        document.getElementById("table-before").value = "ёэញ이យ飞ⵅඞ乐ධហ𓆓ඏ广하ᖃ를ᕆيඛكඹᐅ쓴ฬидឡⴵอ专丽ⴼ𓅓ⴶฐᔨⵥฑق𓄿웠สжអᓯ";
+        document.getElementById("table-after").value = "へひのあなころたきつねんとかいせうしよちやてすーむふはにりまくけれをるめさらもゆわえみほぬそ";
+      }
+
       function decode() 
       {
         var table_before = Array.from(document.getElementById("table-before").value);
