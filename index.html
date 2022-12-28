@@ -6,7 +6,7 @@
     <meta property="og:description" content="換字式暗号を任意の変換表で復号化します。">
   </head>
   <body>
-    <h1>Are you alone? `”゜</h1>
+    <h1>Are you alone?</h1>
 
     <label for="table-before">表（変換前）</label><br>
     <textarea type="text" id="table-before" rows="1" cols="100"></textarea><br>
@@ -17,6 +17,9 @@
     <button onclick="swap_tables()" style="width:150px; height: 50px;">変換前と後を入れ替え</button><br>
     <label for="ciphertext">暗号文</label><br>
     <textarea type="text" id="ciphertext" rows="10" cols="100"></textarea><br>
+    <button onclick="insert_char(this.innerText)" style="width:50px; height: 50px;">`</button>
+    <button onclick="insert_char(this.innerText)" style="width:50px; height: 50px;">”</button>
+    <button onclick="insert_char(this.innerText)" style="width:50px; height: 50px;">゜</button>
     <button onclick="decode()" style="width:150px; height: 50px;">復号化</button><br>
     <label for="ciphertext">平文</label><br>
     <textarea type="text" id="plaintext" rows="10" cols="100"></textarea><br>
@@ -39,6 +42,19 @@
         var temp = document.getElementById("table-before").value;
         document.getElementById("table-before").value = document.getElementById("table-after").value;
         document.getElementById("table-after").value = temp;
+      }
+
+      function insert_char(char)
+      {
+        var textarea = document.getElementById("ciphertext");
+        var cursorPos = textarea.selectionStart;
+
+        var text_before = textarea.value.substring(0, cursorPos);
+        var text_after = textarea.value.substring(cursorPos);
+        textarea.value = text_before + char + text_after;
+
+        textarea.focus();
+        textarea.setSelectionRange(cursorPos + 1, cursorPos + 1);
       }
 
       function decode() 
